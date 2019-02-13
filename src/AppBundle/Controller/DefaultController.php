@@ -15,7 +15,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $prizes = ["phone", "car", "boeing 777"];
         // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:main.html.twig');
+        return $this->render('AppBundle:Default:main.html.twig', array(
+            "prizes" => $prizes
+        ));
     }
 }

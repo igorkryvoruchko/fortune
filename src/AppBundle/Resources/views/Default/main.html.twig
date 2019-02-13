@@ -2,13 +2,53 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Welcome to the GAME</h1>
+        <h1>Welcome to the FORTUNE GAME</h1>
         <h2>Lets START</h2>
-        <button onclick="spin()">Spin</button>
+        <button onclick="spin()" style="padding: 20px; background: red; color:white"><b>Spin</b></button><br><br>
+        <div id="result"></div>
+    </div>
+    <div>
+        <p>Your winnings</p>
+        <p>Money: $<span id="money">0</span></p>
+        <p>Bonus: <span id="bonus">0</span> points</p>
+        <p>Prizes: <span id="prize"></span></p>
     </div>
     <script>
+        var totalMoney = 0;
+        var totalBonus = 0;
+        var totalPrizes = "";
+        var prizes = ["{{ prizes[0] }}", "{{ prizes[1] }}", "{{ prizes[2] }}"];
+
         function spin(){
-            alert("you win!");
+            var resBlock = document.getElementById("result");
+            resBlock.innerHTML = "";
+            var res = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+            switch (res) {
+                case 2:
+                    var winMoney = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
+                    resBlock.innerHTML = "Congratulations, you win a $" + winMoney + "!!!";
+                    totalMoney = totalMoney + winMoney;
+                    document.getElementById("money").innerHTML = totalMoney;
+                    break;
+                case 5:
+                    var winBonus = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+                    resBlock.innerHTML = "Congratulations, you win a " + winBonus + " bonus points!!!";
+                    totalBonus = totalBonus + winBonus;
+                    document.getElementById("bonus").innerHTML = totalBonus;
+                    break;
+                case 8:
+                    var winPrize = "";
+                    winPrize = prizes[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
+                    resBlock.innerHTML = "Congratulations, you win a prize: " + winPrize + "!!!";
+                    if(totalPrizes.length == 0){
+                        totalPrizes = totalPrizes + winPrize;
+                    }else{
+                        totalPrizes = totalPrizes + ", " + winPrize;
+                    }
+                    document.getElementById("prize").innerHTML = totalPrizes;
+                    break;
+            }
+
         }
     </script>
 {% endblock %}
