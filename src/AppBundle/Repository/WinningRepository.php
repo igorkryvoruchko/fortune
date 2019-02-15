@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
 /**
  * WinningRepository
  *
@@ -10,4 +12,12 @@ namespace AppBundle\Repository;
  */
 class WinningRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllWinnings($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT w FROM AppBundle:Winning w WHERE w.userId = $id AND w.status=true"
+            )
+            ->getResult();
+    }
 }

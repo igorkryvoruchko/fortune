@@ -13,3 +13,4 @@ fos_user:
 app_bundle_route:
     path:     /win
     defaults: { _controller: AppBundle:Default:win }
+

@@ -19,10 +19,31 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $userId = $this->getUser()->getId();
+        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findAllWinnings($userId);
+        $totalMoney = 0;
+        $totalBonus = 0;
+        $totalPrize = "";
+        foreach ($winnings as $win)
+        {
+            switch ($win->getWinCategory())
+            {
+                case "money":
+                    $totalMoney += $win->getWinItem();
+                    break;
+                case "bonus":
+                    $totalBonus += $win->getWinItem();
+                    break;
+                case "prize":
+                    $totalPrize .= " ".$win->getWinItem();
+                    break;
+            }
+        }
+
         $prizes = ["phone", "car", "boeing 777"];
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:main.html.twig', array(
-            "prizes" => $prizes
+            "prizes" => $prizes, "totalMoney" => $totalMoney, "totalBonus" => $totalBonus, "totalPrize" => $totalPrize
         ));
     }
 
