@@ -2,7 +2,7 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Welcome to the FORTUNE GAME</h1>
+        <h1>Welcome to the FORTUNE GAME {{ app.user.username }}</h1>
         <h2>Lets START</h2>
         <button onclick="spin()" style="padding: 20px; background: red; color:white"><b>Spin</b></button><br><br>
         <div id="result"></div>
@@ -13,6 +13,7 @@
         <p>Bonus: <span id="bonus">0</span> points</p>
         <p>Prizes: <span id="prize"></span></p>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>
         var totalMoney = 0;
         var totalBonus = 0;
@@ -29,12 +30,32 @@
                     resBlock.innerHTML = "Congratulations, you win a $" + winMoney + "!!!";
                     totalMoney = totalMoney + winMoney;
                     document.getElementById("money").innerHTML = totalMoney;
+                    $.ajax({
+                        url:'{{ (path('app_bundle_route')) }}',
+                        type: "POST",
+                        data: { userId: "{{ app.user.id }}", category: "money", item: ""+winMoney+"" },
+                        async: true,
+                        success: function (data)
+                        {
+                            console.log(data);
+                        }
+                    });
                     break;
                 case 5:
                     var winBonus = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
                     resBlock.innerHTML = "Congratulations, you win a " + winBonus + " bonus points!!!";
                     totalBonus = totalBonus + winBonus;
                     document.getElementById("bonus").innerHTML = totalBonus;
+                    $.ajax({
+                        url:'{{ (path('app_bundle_route')) }}',
+                        type: "POST",
+                        data: { userId: "{{ app.user.id }}", category: "bonus", item: ""+winBonus+"" },
+                        async: true,
+                        success: function (data)
+                        {
+                            console.log(data);
+                        }
+                    });
                     break;
                 case 8:
                     var winPrize = "";
@@ -46,6 +67,16 @@
                         totalPrizes = totalPrizes + ", " + winPrize;
                     }
                     document.getElementById("prize").innerHTML = totalPrizes;
+                    $.ajax({
+                        url:'{{ (path('app_bundle_route')) }}',
+                        type: "POST",
+                        data: { userId: "{{ app.user.id }}", category: "prize", item: ""+winPrize+"" },
+                        async: true,
+                        success: function (data)
+                        {
+                            console.log(data);
+                        }
+                    });
                     break;
             }
 

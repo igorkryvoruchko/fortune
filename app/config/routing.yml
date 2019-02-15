@@ -9,3 +9,7 @@ easy_admin_bundle:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app_bundle_route:
+    path:     /win
+    defaults: { _controller: AppBundle:Default:win }
