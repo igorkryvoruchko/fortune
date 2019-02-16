@@ -4,6 +4,7 @@
     <div style="text-align: center">
         <h1>Welcome to the FORTUNE GAME {{ app.user.username }}</h1>
         <h2>Lets START</h2>
+        <h3>Your have {{ totalLoyalty }} loyalty poins</h3>
         <button onclick="spin()" style="padding: 20px; background: red; color:white"><b>Spin</b></button><br><br>
         <div id="result"></div>
         <div id="form" style="display: none">
@@ -14,9 +15,9 @@
     </div>
     <div>
         <p>Your winnings</p>
-        <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="showForm()">Withdraw funds to a bank account</button></p>
-        <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points</p>
-        <p>Prizes: <span id="prize">{{ totalPrize }}</span></p>
+        <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="showForm()">Withdraw funds to a bank account</button> ||  <a href="{{ path("moneytoloyalty") }}"><button>Withdraw funds to a Loyalty account</button></a></p>
+        <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points  || <a href="{{ path("bonustoloyalty") }}"><button>Transfer bonuses to the loyalty account</button></a></p>
+        <p>Prizes: <span id="prize">{{ totalPrize }}</span>  || <a href="{{ path("dontneedprize") }}"><button>I don't need a prizes!</button></a></p>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>

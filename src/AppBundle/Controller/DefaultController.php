@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Loyalty;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,14 +20,19 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $userId = $this->getUser()->getId();
-        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findAllWinnings($userId);
+        $userId = $this->getUser()->getId();// get user id
+        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findAllWinnings($userId); // find all user winnings
+        $loyalty = $this->getDoctrine()->getRepository(Loyalty::class)->findBy(["userId" => $userId]);//find all loyalty points
+        $totalLoyalty = 0;
+        foreach ($loyalty as $loyaltyPoints) {
+            $totalLoyalty += $loyaltyPoints->getLoyaltyPoints();
+        }
         $totalMoney = 0;
         $totalBonus = 0;
         $totalPrize = "";
         foreach ($winnings as $win)
         {
-            switch ($win->getWinCategory())
+            switch ($win->getWinCategory()) //sort winnings
             {
                 case "money":
                     $totalMoney += $win->getWinItem();
@@ -40,15 +46,15 @@ class DefaultController extends Controller
             }
         }
 
-        $prizes = ["phone", "car", "boeing 777"];
+        $prizes = ["phone", "car", "boeing 777"]; // available prizes
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:main.html.twig', array(
-            "prizes" => $prizes, "totalMoney" => $totalMoney, "totalBonus" => $totalBonus, "totalPrize" => $totalPrize
+            "prizes" => $prizes, "totalMoney" => $totalMoney, "totalBonus" => $totalBonus, "totalPrize" => $totalPrize, "totalLoyalty" => $totalLoyalty
         ));
     }
 
 
-    public function winAction(Request $request)
+    public function winAction(Request $request) // this route for ajax requests, when user some win
     {
         if($request->request->get('userId')){
             $entityManager = $this->getDoctrine()->getManager();
@@ -59,9 +65,9 @@ class DefaultController extends Controller
             $winning->setDateTime(date("Y-m-d H:i:s"));
 
             $entityManager->persist($winning);
-            $entityManager->flush();
+            $entityManager->flush();// create new winning
 
-            return new JsonResponse("Winnings added successfully");
+            return new JsonResponse("Winnings added successfully"); // add message to console.log
         }
 
     }
