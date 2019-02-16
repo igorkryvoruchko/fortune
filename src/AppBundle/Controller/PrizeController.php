@@ -16,16 +16,12 @@ class PrizeController extends Controller
     public function DontNeedPrizeAction()
     {
         $userId = $this->getUser()->getId(); //get user id
-        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findAllWinnings($userId); //get all user winnings
+        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findSomeWinnings($userId, "prize"); //get all user winnings
         foreach ($winnings as $win) {
-            switch ($win->getWinCategory()) {
-                case "prize":
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $win = $entityManager->getRepository(Winning::class)->find($win->getId());
-                    $win->setStatus(false);
-                    $entityManager->flush(); //update column status to false
-                    break;
-            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $win = $entityManager->getRepository(Winning::class)->find($win->getId());
+            $win->setStatus(false);
+            $entityManager->flush(); //update column status to false
         }
         return $this->redirectToRoute('homepage');
     }

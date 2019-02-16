@@ -20,4 +20,13 @@ class WinningRepository extends \Doctrine\ORM\EntityRepository
             )
             ->getResult();
     }
+
+    public function findSomeWinnings($id, $category)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT w FROM AppBundle:Winning w WHERE w.userId=$id AND w.status=true AND w.winCategory='$category'"
+            )
+            ->getResult();
+    }
 }

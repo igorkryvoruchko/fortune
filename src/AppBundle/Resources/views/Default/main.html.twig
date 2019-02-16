@@ -33,20 +33,21 @@
             var res = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
             switch (res) {
                 case 2:
-                    var winMoney = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
-                    resBlock.innerHTML = "Congratulations, you win a $" + winMoney + "!!!";
-                    totalMoney = totalMoney + winMoney;
-                    document.getElementById("money").innerHTML = totalMoney;
-                    $.ajax({
-                        url:'{{ (path('app_bundle_route')) }}',
-                        type: "POST",
-                        data: { userId: "{{ app.user.id }}", category: "money", item: ""+winMoney+"" },
-                        async: true,
-                        success: function (data)
-                        {
-                            console.log(data);
-                        }
-                    });
+                    if(totalMoney < 3000) {
+                        var winMoney = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
+                        resBlock.innerHTML = "Congratulations, you win a $" + winMoney + "!!!";
+                        totalMoney = totalMoney + winMoney;
+                        document.getElementById("money").innerHTML = totalMoney;
+                        $.ajax({
+                            url: '{{ (path('app_bundle_route')) }}',
+                            type: "POST",
+                            data: {userId: "{{ app.user.id }}", category: "money", item: "" + winMoney + ""},
+                            async: true,
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+                    }
                     break;
                 case 5:
                     var winBonus = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
@@ -65,25 +66,26 @@
                     });
                     break;
                 case 8:
-                    var winPrize = "";
-                    winPrize = prizes[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
-                    resBlock.innerHTML = "Congratulations, you win a prize: " + winPrize + "!!!";
-                    if(totalPrizes.length == 0){
-                        totalPrizes = totalPrizes + winPrize;
-                    }else{
-                        totalPrizes = totalPrizes + " " + winPrize;
-                    }
-                    document.getElementById("prize").innerHTML = totalPrizes;
-                    $.ajax({
-                        url:'{{ (path('app_bundle_route')) }}',
-                        type: "POST",
-                        data: { userId: "{{ app.user.id }}", category: "prize", item: ""+winPrize+"" },
-                        async: true,
-                        success: function (data)
-                        {
-                            console.log(data);
+                    if(totalPrizes.trim().split(/\s+/).length < 5) {
+                        var winPrize = "";
+                        winPrize = prizes[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
+                        resBlock.innerHTML = "Congratulations, you win a prize: " + winPrize + "!!!";
+                        if (totalPrizes.length == 0) {
+                            totalPrizes = totalPrizes + winPrize;
+                        } else {
+                            totalPrizes = totalPrizes + " " + winPrize;
                         }
-                    });
+                        document.getElementById("prize").innerHTML = totalPrizes;
+                        $.ajax({
+                            url: '{{ (path('app_bundle_route')) }}',
+                            type: "POST",
+                            data: {userId: "{{ app.user.id }}", category: "prize", item: "" + winPrize + ""},
+                            async: true,
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+                    }
                     break;
             }
 

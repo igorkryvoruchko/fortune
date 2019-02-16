@@ -46,7 +46,7 @@ class DefaultController extends Controller
             }
         }
 
-        $prizes = ["phone", "car", "boeing 777"]; // available prizes
+        $prizes = ["phone", "car", "boeing-777"]; // available prizes
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:main.html.twig', array(
             "prizes" => $prizes, "totalMoney" => $totalMoney, "totalBonus" => $totalBonus, "totalPrize" => $totalPrize, "totalLoyalty" => $totalLoyalty

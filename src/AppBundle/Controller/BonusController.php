@@ -17,25 +17,20 @@ class BonusController extends Controller
     public function bonusToLoyaltyAction()
     {
         $userId = $this->getUser()->getId(); //get user id
-        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findAllWinnings($userId); //get all user winnings
+        $winnings = $this->getDoctrine()->getRepository(Winning::class)->findSomeWinnings($userId, "bonus"); //get all user money winnings
         $totalBonus = 0;
-        foreach ($winnings as $win) {
-            switch ($win->getWinCategory()) {
-                case "bonus":
-                    $totalBonus += $win->getWinItem();//sum all user money winnings
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $win = $entityManager->getRepository(Winning::class)->find($win->getId());
-                    $win->setStatus(false);
-                    $entityManager->flush(); //update column status to false
-                    break;
-            }
+        foreach ($winnings as $win)
+        {
+            $totalBonus += $win->getWinItem();//sum all user money winnings
+            $entityManager = $this->getDoctrine()->getManager();
+            $win = $entityManager->getRepository(Winning::class)->find($win->getId());
+            $win->setStatus(false);
+            $entityManager->flush(); //update column status to false
         }
-
         $entityManager = $this->getDoctrine()->getManager();
         $loyalty = new Loyalty();
         $loyalty->setUserId($userId);
-        $loyalty->setLoyaltyPoints($totalBonus);
-
+        $loyalty->setLoyaltyPoints(intdiv($totalBonus, 10));
         $entityManager->persist($loyalty);
         $entityManager->flush();// create new loyalty
 
