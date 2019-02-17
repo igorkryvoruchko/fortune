@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="791203fd-163f-4131-bbac-c057d00c9f86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/BonusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/BonusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/MoneyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/MoneyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PrizeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PrizeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,14 +64,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Command/moneyToBankCommand.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/main.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="56" column="1" lean-forward="true" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-              <folding>
-                <element signature="e#116#157#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="706">
+              <caret line="94" column="61" selection-start-line="94" selection-start-column="61" selection-end-line="94" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="390">
+                <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="45" column="26" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -118,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/WinningsActions/Extensions/MoneyServices.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/MoneyController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Command/moneyToBankCommand.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -192,42 +204,18 @@
             <path>
               <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
               <item name="fortune" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fortune" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
               <item name="fortune" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fortune" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Command" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fortune" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fortune" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="WinningsActions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fortune" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fortune" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="WinningsActions" type="462c0819:PsiDirectoryNode" />
-              <item name="Extensions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -275,15 +263,16 @@
       <workItem from="1550238887952" duration="13224000" />
       <workItem from="1550261579624" duration="2577000" />
       <workItem from="1550302472192" duration="12556000" />
-      <workItem from="1550392402281" duration="23531000" />
+      <workItem from="1550392402281" duration="26487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77020000" />
+    <option name="totallyTimeSpent" value="79976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34654132" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -363,13 +352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -434,13 +416,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="85" column="49" selection-start-line="85" selection-start-column="49" selection-end-line="85" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -448,13 +423,6 @@
           <folding>
             <element signature="e#69#111#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/main.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="892">
-          <caret line="94" column="61" selection-start-line="94" selection-start-column="61" selection-end-line="94" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -524,11 +492,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Command/moneyToBankCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="56" column="1" lean-forward="true" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+        <state relative-caret-position="231">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
           <folding>
             <element signature="e#116#157#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/main.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="706">
+          <caret line="94" column="61" selection-start-line="94" selection-start-column="61" selection-end-line="94" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="390">
+            <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
