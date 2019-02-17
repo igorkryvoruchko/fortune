@@ -33,3 +33,15 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    MoneyServices:
+        # The namespace with the name of the class that contain our service
+        class: AppBundle\WinningsActions\Extensions\MoneyServices
+        public: true
+        #The services that we will inject (see the constructor)
+        arguments: [ "@doctrine.orm.entity_manager" , "@service_container" ]

@@ -17,12 +17,8 @@ class PrizeController extends Controller
     {
         $userId = $this->getUser()->getId(); //get user id
         $winnings = $this->getDoctrine()->getRepository(Winning::class)->findSomeWinnings($userId, "prize"); //get all user winnings
-        foreach ($winnings as $win) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $win = $entityManager->getRepository(Winning::class)->find($win->getId());
-            $win->setStatus(false);
-            $entityManager->flush(); //update column status to false
-        }
+        $update = $this->get('MoneyServices');
+        $update->setStatusFalseWinnings($winnings);//update all bonus winnings to false
         return $this->redirectToRoute('homepage');
     }
 

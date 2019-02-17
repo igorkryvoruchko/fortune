@@ -7,15 +7,10 @@
         <h3>Your have {{ totalLoyalty }} loyalty poins</h3>
         <button onclick="spin()" style="padding: 20px; background: red; color:white"><b>Spin</b></button><br><br>
         <div id="result"></div>
-        <div id="form" style="display: none">
-            <h1>Withdraw funds to a bank account</h1>
-            <input type="text" placeholder="number of bank account" id="bank_account"><br><br>
-            <button onclick="sendMoneyToBank()">Confirm</button>
-        </div>
     </div>
     <div>
         <p>Your winnings</p>
-        <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="showForm()">Withdraw funds to a bank account</button> ||  <a href="{{ path("moneytoloyalty") }}"><button>Withdraw funds to a Loyalty account</button></a></p>
+        <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="sendMoneyToBank()">Withdraw funds to a bank account</button> ||  <a href="{{ path("moneytoloyalty") }}"><button>Withdraw funds to a Loyalty account</button></a></p>
         <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points  || <a href="{{ path("bonustoloyalty") }}"><button>Transfer bonuses to the loyalty account</button></a></p>
         <p>Prizes: <span id="prize">{{ totalPrize }}</span>  || <a href="{{ path("dontneedprize") }}"><button>I don't need a prizes!</button></a></p>
     </div>
@@ -91,17 +86,13 @@
 
         }
 
-        function showForm()
-        {
-            $("#form").css("display", "block")
-        }
 
         function sendMoneyToBank()
         {
-            var number = $("#bank_account").val();
+            var alConfirm = confirm("Withdraw funds to your bank account?");
 
-            if(number.length > 10){
-                window.location.replace("/moneytobank/"+number);
+            if(alConfirm){
+                window.location.replace("{{ path("moneytobank") }}");
             }
 
         }

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Loyalty;
 use AppBundle\Entity\Winning;
+use AppBundle\WinningsActions\WinningAction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -18,15 +19,10 @@ class BonusController extends Controller
     {
         $userId = $this->getUser()->getId(); //get user id
         $winnings = $this->getDoctrine()->getRepository(Winning::class)->findSomeWinnings($userId, "bonus"); //get all user money winnings
-        $totalBonus = 0;
-        foreach ($winnings as $win)
-        {
-            $totalBonus += $win->getWinItem();//sum all user money winnings
-            $entityManager = $this->getDoctrine()->getManager();
-            $win = $entityManager->getRepository(Winning::class)->find($win->getId());
-            $win->setStatus(false);
-            $entityManager->flush(); //update column status to false
-        }
+        $summingBonus = new WinningAction();
+        $totalBonus = $summingBonus->summingWinnings($winnings);//summing all bonus user winnings
+        $update = $this->get('MoneyServices');
+        $update->setStatusFalseWinnings($winnings);//update all bonus winnings to false
         $entityManager = $this->getDoctrine()->getManager();
         $loyalty = new Loyalty();
         $loyalty->setUserId($userId);

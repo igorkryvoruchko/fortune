@@ -81,6 +81,9 @@ fos_user:
     from_email:
         address: "igor.kryvoruchko.88@gmail.com"
         sender_name: "1111"
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
 
 
 easy_admin:
