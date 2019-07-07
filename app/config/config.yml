@@ -93,3 +93,4 @@ easy_admin:
         - AppBundle\Entity\User
         - AppBundle\Entity\Winning
         - AppBundle\Entity\Loyalty
+        - AppBundle\Entity\Prizes
