@@ -1,11 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">Loyalty: {{ totalLoyalty }}</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link">Money: $<span id="money">{{ totalMoney }}</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link">Bonus: <span id="bonus">{{ totalBonus }}</span></a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prizes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span class="dropdown-item">Your prizes:</span>
+                        <span class="dropdown-item" href="#"><span id="prize">{{ totalPrize }}</span></span>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="{{ path("dontneedprize") }}">I don't need a prizes!</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div style="text-align: center">
         <h1>Welcome to the FORTUNE GAME {{ app.user.username }}</h1>
         <h2>Lets START</h2>
         <h3>Your have {{ totalLoyalty }} loyalty poins</h3>
-        <button onclick="spin()" style="padding: 20px; background: red; color:white"><b>Spin</b></button><br><br>
+        <button onclick="spin()" class="btn btn-danger"><b>Spin</b></button><br><br>
         <div id="result"></div>
     </div>
     <div>
