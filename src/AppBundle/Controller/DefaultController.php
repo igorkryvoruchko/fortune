@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Loyalty;
+use AppBundle\Entity\Prizes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +47,8 @@ class DefaultController extends Controller
             }
         }
 
-        $prizes = ["phone", "car", "boeing-777"]; // available prizes
+        $prizes = $this->getDoctrine()->getRepository(Prizes::class)->findAll();/*["phone", "car", "boeing-777"]; */// available prizes
+        //var_dump($prizes);die();
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:main.html.twig', array(
             "prizes" => $prizes, "totalMoney" => $totalMoney, "totalBonus" => $totalBonus, "totalPrize" => $totalPrize, "totalLoyalty" => $totalLoyalty

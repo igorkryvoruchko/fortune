@@ -9,6 +9,7 @@
         <div id="result"></div>
     </div>
     <div>
+        <p>
         <p>Your winnings</p>
         <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="sendMoneyToBank()">Withdraw funds to a bank account</button> ||  <a href="{{ path("moneytoloyalty") }}"><button>Withdraw funds to a Loyalty account</button></a></p>
         <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points  || <a href="{{ path("bonustoloyalty") }}"><button>Transfer bonuses to the loyalty account</button></a></p>
@@ -19,7 +20,10 @@
         var totalMoney = {{ totalMoney }};
         var totalBonus = {{ totalBonus }};
         var totalPrizes = "{{ totalPrize }}";
-        var prizes = ["{{ prizes[0] }}", "{{ prizes[1] }}", "{{ prizes[2] }}"];
+        var prizes = [];
+            {% for item in prizes %}
+                prizes.push("{{ item.prize }}");
+            {% endfor %}
 
         function spin()
         {
