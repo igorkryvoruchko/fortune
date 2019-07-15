@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -25,13 +25,14 @@
                     </div>
                 </li>
             </ul>
+            <spam class="form-inline my-2 my-lg-0">
+                <spam class="form-control mr-sm-2">{{ app.user.username }}</spam>
+            </spam>
         </div>
     </nav>
     <div style="text-align: center">
-        <h1>Welcome to the FORTUNE GAME {{ app.user.username }}</h1>
-        <h2>Lets START</h2>
-        <h3>Your have {{ totalLoyalty }} loyalty poins</h3>
-        <button onclick="spin()" class="btn btn-danger"><b>Spin</b></button><br><br>
+        <h1>Welcome to the FORTUNE GAME </h1>
+
         <div id="result"></div>
     </div>
     <div>
@@ -41,6 +42,12 @@
         <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points  || <a href="{{ path("bonustoloyalty") }}"><button>Transfer bonuses to the loyalty account</button></a></p>
         <p>Prizes: <span id="prize">{{ totalPrize }}</span>  || <a href="{{ path("dontneedprize") }}"><button>I don't need a prizes!</button></a></p>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <button onclick="spin()" class="btn btn-danger float-right" style="border:4px solid lightgray; width:150px;height:50px"><b>Spin</b></button>
+        </div>
+    </footer>
+    <!-- Footer -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>
         var totalMoney = {{ totalMoney }};
