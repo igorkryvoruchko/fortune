@@ -7,11 +7,24 @@
                 <li class="nav-item active">
                     <a class="nav-link">Loyalty: {{ totalLoyalty }}</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link">Money: $<span id="money">{{ totalMoney }}</span></a>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        $ <span id="money">{{ totalMoney }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span class="dropdown-item"><a class="text-danger" href="#" onclick="sendMoneyToBank()">Withdraw funds to a bank account</a></span>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="{{ path("moneytoloyalty") }}">Withdraw funds to a Loyalty account</a>
+                    </div>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link">Bonus: <span id="bonus">{{ totalBonus }}</span></a>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bonus: <span id="bonus">{{ totalBonus }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="{{ path("bonustoloyalty") }}">Transfer bonuses to the loyalty account</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,17 +44,33 @@
         </div>
     </nav>
     <div style="text-align: center">
-        <h1>Welcome to the FORTUNE GAME </h1>
+        <h1>FORTUNE GAME</h1>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-        <div id="result"></div>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title font-weight-bolder">You win!</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div id="result"></div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div>
-        <p>
-        <p>Your winnings</p>
-        <p>Money: $<span id="money">{{ totalMoney }}</span>  ||  <button onclick="sendMoneyToBank()">Withdraw funds to a bank account</button> ||  <a href="{{ path("moneytoloyalty") }}"><button>Withdraw funds to a Loyalty account</button></a></p>
-        <p>Bonus: <span id="bonus">{{ totalBonus }}</span> points  || <a href="{{ path("bonustoloyalty") }}"><button>Transfer bonuses to the loyalty account</button></a></p>
-        <p>Prizes: <span id="prize">{{ totalPrize }}</span>  || <a href="{{ path("dontneedprize") }}"><button>I don't need a prizes!</button></a></p>
-    </div>
+
     <footer class="footer">
         <div class="container">
             <button onclick="spin()" class="btn btn-danger float-right" style="border:4px solid lightgray; width:150px;height:50px"><b>Spin</b></button>
@@ -67,6 +96,7 @@
                 case 2:
                     if(totalMoney < 3000) {
                         var winMoney = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
+                        $("#myModal").modal()
                         resBlock.innerHTML = "Congratulations, you win a $" + winMoney + "!!!";
                         totalMoney = totalMoney + winMoney;
                         document.getElementById("money").innerHTML = totalMoney;
@@ -83,6 +113,7 @@
                     break;
                 case 5:
                     var winBonus = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+                    $("#myModal").modal()
                     resBlock.innerHTML = "Congratulations, you win a " + winBonus + " bonus points!!!";
                     totalBonus = totalBonus + winBonus;
                     document.getElementById("bonus").innerHTML = totalBonus;
@@ -101,6 +132,7 @@
                     if(totalPrizes.trim().split(/\s+/).length < 5) {
                         var winPrize = "";
                         winPrize = prizes[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
+                        $("#myModal").modal()
                         resBlock.innerHTML = "Congratulations, you win a prize: " + winPrize + "!!!";
                         if (totalPrizes.length == 0) {
                             totalPrizes = totalPrizes + winPrize;
